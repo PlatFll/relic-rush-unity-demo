@@ -1,6 +1,6 @@
 # Relic Rush
 
-**Relic Rush** is a playable Unity prototype for an endless hidden-object roguelite designed around short mobile-friendly runs, escalating observation challenges, score chasing, and run upgrades.
+**Relic Rush** is a playable Unity prototype for an endless hidden-object roguelite designed around short mobile-friendly runs, escalating observation challenges, and score chasing.
 
 ## Unity version
 
@@ -18,7 +18,7 @@ The demo scene itself is intentionally minimal. `RelicRushBootstrap` creates the
 
 ## Current playable demo
 
-- Two procedurally generated pixel-art environments:
+- Two procedurally generated pixel-art environment variants:
   - Alchemist Workshop
   - Smuggler's Tavern
 - Sixteen searchable hidden objects.
@@ -29,21 +29,13 @@ The demo scene itself is intentionally minimal. `RelicRushBootstrap` creates the
 - Wrong-tap time penalties.
 - Cryptic clue rounds.
 - Darkness rounds.
-- Upgrade choice every two rooms.
-- Hint powerup with limited charges.
+- Limited-use Hint powerup.
 - Persistent local high score using `PlayerPrefs`.
-- Mouse and touch input.
-- Landscape mobile orientation.
-
-## Current run upgrades
-
-- **Pocket Watch** — +5 seconds to future rooms.
-- **Detective Lens** — +2 Hint charges.
-- **Combo Chain** — stronger combo score scaling.
+- Unity UI input suitable for mouse or touch.
 
 ## Art approach
 
-The prototype does not depend on external art files. Its rooms and searchable objects are generated in code as pixel art, so the project can be cloned and opened directly without missing textures.
+The GitHub version is self-contained and does not depend on external texture files. The demo generates its pixel-art rooms and props at runtime, so a clone does not have missing art dependencies.
 
 ## Monetization note
 
@@ -62,4 +54,4 @@ ProjectSettings/ProjectVersion.txt
 
 ## Scope
 
-This is a vertical-slice prototype intended to test whether hidden-object searching + endless escalation + roguelite upgrade choices makes a fun repeatable mobile loop before investing in production art, more modifiers, more upgrades, daily challenges, leaderboards, meta progression, or monetization infrastructure.
+This is a vertical-slice prototype intended to test whether hidden-object searching plus endless escalation makes a fun repeatable mobile loop before investing in production art, more modifiers, upgrade systems, daily challenges, leaderboards, meta progression, or monetization infrastructure.
