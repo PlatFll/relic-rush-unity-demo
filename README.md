@@ -1,91 +1,65 @@
 # Relic Rush
 
-A small playable Unity prototype for an **endless hidden-object roguelite** designed around short mobile-friendly runs, escalating observation challenges, run upgrades, score chasing, and consumable-style powerups.
+**Relic Rush** is a playable Unity prototype for an endless hidden-object roguelite designed around short mobile-friendly runs, escalating observation challenges, score chasing, and run upgrades.
 
 ## Unity version
 
 **Unity 6.3 LTS — 6000.3.21f1**
 
-The project intentionally targets the LTS line rather than the newest Update release so the prototype starts on a stable production-oriented version.
-
 ## Open and play
 
-1. Clone/download the repository.
-2. In Unity Hub, install **Unity 6000.3.21f1** if you do not already have it.
-3. Add this repository folder as a project.
+1. Clone this repository.
+2. In Unity Hub, install Unity **6000.3.21f1** if needed.
+3. Add the cloned folder as a Unity project.
 4. Open `Assets/Scenes/Demo.unity`.
 5. Press **Play**.
 
-The entire game UI is assembled at runtime by `RelicRushBootstrap`, so the Demo scene is deliberately empty.
+The demo scene itself is intentionally minimal. `RelicRushBootstrap` creates the playable game at runtime.
 
-## Current demo loop
+## Current playable demo
 
-- Start a run from the main menu.
-- Search one of two handcrafted pixel-art rooms.
-- Find the randomly selected target objects before time expires.
-- Fast consecutive finds build a score combo.
-- Wrong taps break combo and subtract time.
-- Each room also contains an unlisted **Bonus Relic** worth extra score and +2 seconds.
-- Every two cleared rooms, choose one of three roguelite upgrades.
-- As the run continues, rounds gain modifiers:
-  - cryptic clue targets
-  - darkness / spotlight searching
-  - horizontally mirrored rooms
-  - increasingly tight time limits and larger target lists
-- Lose when the timer reaches zero.
-- The local high score persists with `PlayerPrefs`.
+- Two procedurally generated pixel-art environments:
+  - Alchemist Workshop
+  - Smuggler's Tavern
+- Sixteen searchable hidden objects.
+- Random target lists each room.
+- Endless room progression until the timer reaches zero.
+- Target count and clock pressure increase as the run continues.
+- Fast-find combo scoring.
+- Wrong-tap time penalties.
+- Cryptic clue rounds.
+- Darkness rounds.
+- Upgrade choice every two rooms.
+- Hint powerup with limited charges.
+- Persistent local high score using `PlayerPrefs`.
+- Mouse and touch input.
+- Landscape mobile orientation.
 
-## Prototype powerups
+## Current run upgrades
 
-The bottom HUD contains two consumable-style powerups to demonstrate where mobile monetization could fit without changing the core game:
+- **Pocket Watch** — +5 seconds to future rooms.
+- **Detective Lens** — +2 Hint charges.
+- **Combo Chain** — stronger combo score scaling.
 
-- **Hint** — flashes one remaining target.
-- **Time Crystal** — adds 8 seconds.
+## Art approach
 
-They are free limited charges in this prototype. There is **no store, ad SDK, IAP, analytics SDK, or real-money purchase implementation**.
+The prototype does not depend on external art files. Its rooms and searchable objects are generated in code as pixel art, so the project can be cloned and opened directly without missing textures.
 
-## Run upgrades
+## Monetization note
 
-The current upgrade pool includes:
+The Hint system demonstrates one possible consumable-style powerup. This prototype contains **no store, ads, analytics SDK, IAP SDK, or real-money purchase code**.
 
-- Pocket Watch — more starting time every room.
-- Detective Lens — additional/better hints.
-- Gilded Combo Chain — stronger combo scoring.
-- Mistake Ward — protects the first wrong tap each room.
-- Crystal Satchel — more time-crystal uses.
-- Hunter's Focus — slows target-list growth.
-
-## Art
-
-The playable rooms and UI palette were created specifically for this prototype as pixel-art assets. `Docs/Concept/relic_rush_ai_moodboard.png` is an additional generated high-detail visual direction reference for future production art.
-
-The source art generator (`generate_art.py`) is kept in the repo so the current room artwork is reproducible and easy to iterate on.
-
-## Controls
-
-### Desktop / Editor
-- Left click objects to search.
-- Move the mouse to move the spotlight during darkness rounds.
-
-### Mobile
-- Tap objects.
-- During darkness rounds, the spotlight follows the active touch.
-- The project forces landscape orientation at runtime.
-
-## Project structure
+## Main project files
 
 ```text
 Assets/
-  Resources/Art/       Pixel-art room backgrounds
-  Scenes/Demo.unity    Empty bootstrap scene
-  Scripts/             Runtime game + bootstrap code
-  Shaders/             Darkness spotlight UI shader
-Docs/
-  Concept/             Generated production-art moodboard
-  hotspots.json        Source hotspot coordinates
-generate_art.py        Reproducible pixel-art generator
+  Scenes/Demo.unity
+  Scripts/RelicRushBootstrap.cs
+  Scripts/RelicRushGameCompact.cs
+Packages/manifest.json
+ProjectSettings/ProjectVersion.txt
 ```
 
-## Prototype scope
+## Scope
 
-This is intentionally a **vertical slice**, not a production game. The objective is to answer whether the basic combination of hidden-object searching + escalating endless runs + roguelite build choices feels promising before investing in many more rooms, progression systems, monetization infrastructure, or final art.
+This is a vertical-slice prototype intended to test whether hidden-object searching + endless escalation + roguelite upgrade choices makes a fun repeatable mobile loop before investing in production art, more modifiers, more upgrades, daily challenges, leaderboards, meta progression, or monetization infrastructure.
